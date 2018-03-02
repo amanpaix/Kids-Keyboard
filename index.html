@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Kids Keyboard</title>
+    <!--  Style CSS  -->
+    <link rel="stylesheet" href="css/band.css">
+    
+    <!--  Google Fonts CSS  -->
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
+    
+    <!--  Animate CSS  -->
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <!--  FontAwesom CSS  -->
+    <!-- CDN-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Local-->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    
+    <!--  Favicon CSS  -->
+    <link rel="icon" href="img/kid.ico" type="image/x-icon">
+    
+    <!--  MathQuiz CSS  -->
+    <link rel="stylesheet" href="css/mathQuiz.css">
+    
+    <!--  Guess the Number CSS  -->
+    <link rel="stylesheet" href="css/guessTheNumber.css">
+    
+    <!--  JQuery.js  -->
+    <!-- CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Local-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    
+    <!--  custom.js  -->
+    <script src="js/custom.js"></script>
+    
+    <script>
+        // When we click by Mouse 
+        function playByMouse(keyCode) {
+            const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+            const key = document.querySelector(`div[data-key="${keyCode}"]`);
+            if (!audio) return;
+            audio.currentTime = 0;
+            audio.play();
+            if (rhymeClick > 0) {
+                $("#images").html('<img src="img/' + keyCode + '.png" class="img"> ');
+                for (var i = 65; i <= 90; i++) {
+                    if (i != keyCode) {
+                        var audi = document.querySelector(`audio[data-key="${i}"]`);
+                        audi.pause();
+                    }
+                }
+            }
+            $('div[data-key="' + keyCode + '"]').addClass("playing");
+            setTimeout(function() {
+                $('div[data-key="' + keyCode + '"]').removeClass("playing");
+            }, 200);
+        }
+        function enter(e) {
+            if(e.keyCode == 13) {
+                play();
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Welcome Page -->
+    <div class="container">
+        <h2>Hey Kid </h2>
+        <input class="input" type="text" id="nameValue" placeholder="What's your Name" onkeydown="enter(event)"> <br>
+        <button id="plays">Play</button>
+    </div>
+    
+    
+    
+    <!-- Keyboard Layout And Bar with Name and clock -->
+    <div class="container-fluid hidden">
+       
+        <!-- Shows Welcome, {your name} and Clock at Right Side -->
+        <div id="nav">
+            <h2><i class="fa fa-grav" aria-hidden="true"></i> Welcome, <span id="name"></span></h2>
+            <h2 id="clock"></h2>
+        </div>
+        
+        <!-- Row with 100% width -->
+        <div class="row">
+           
+            <!--  Left Section with 80% width shows Keyboard layout and Game when click on game button-->
+            <div class="col-md-10 ">
+               
+                <!-- keyboard layout -->
+                <div id="keysOfKeyboard">
+                   
+                    <div class="keys firstRow">
+                        <div data-key="81" class="key grey test" onclick="playByMouse(81)">
+                            <kbd>Q</kbd>
+                            <span class="sound">Queen</span>
+                        </div>
+                        <div data-key="87" class="key greenish" onclick="playByMouse(87)">
+                            <kbd>W</kbd>
+                            <span class="sound">Well</span>
+                        </div>
+                        <div data-key="69" class="key yelloish" onclick="playByMouse(69)">
+                            <kbd>E</kbd>
+                            <span class="sound">Egg</span>
+                        </div>
+                        <div data-key="82" class="key lightred" onclick="playByMouse(82)">
+                            <kbd>R</kbd>
+                            <span class="sound">Rabbit</span>
+                        </div>
+                        <div data-key="84" class="key red" onclick="playByMouse(84)">
+                            <kbd>T</kbd>
+                            <span class="sound">Train</span>
+                        </div>
+                        <div data-key="89" class="key lightpink" onclick="playByMouse(89)">
+                            <kbd>Y</kbd>
+                            <span class="sound">Yoga</span>
+                        </div>
+                        <div data-key="85" class="key skin" onclick="playByMouse(85)">
+                            <kbd>U</kbd>
+                            <span class="sound big">Umbrella</span>
+                        </div>
+                        <div data-key="73" class="key purple" onclick="playByMouse(73)">
+                            <kbd>I</kbd>
+                            <span class="sound">Igloo</span>
+                        </div>
+                        <div data-key="79" class="key pink" onclick="playByMouse(79)">
+                            <kbd>O</kbd>
+                            <span class="sound">Ox</span>
+                        </div>
+                        <div data-key="80" class="key greenish" onclick="playByMouse(80)">
+                            <kbd>P</kbd>
+                            <span class="sound">Peacock</span>
+                        </div>
+                    </div>
+                    <!-- Second Row-->
+
+                    <div class="keys secondRow">
+                        <div data-key="65" class="key red" onclick="playByMouse(65)">
+                            <kbd>A</kbd>
+                            <span class="sound">Apple</span>
+                        </div>
+                        <div data-key="83" class="key pink" onclick="playByMouse(83)">
+                            <kbd>S</kbd>
+                            <span class="sound">Snake</span>
+                        </div>
+                        <div data-key="68" class="key grey" onclick="playByMouse(68)">
+                            <kbd>D</kbd>
+                            <span class="sound">Dog</span>
+                        </div>
+                        <div data-key="70" class="key greenish" onclick="playByMouse(70)">
+                            <kbd>F</kbd>
+                            <span class="sound">Fish</span>
+                        </div>
+                        <div data-key="71" class="key yelloish" onclick="playByMouse(71)">
+                            <kbd>G</kbd>
+                            <span class="sound">Goat</span>
+                        </div>
+                        <div data-key="72" class="key lightred" onclick="playByMouse(72)">
+                            <kbd>H</kbd>
+                            <span class="sound">Hat</span>
+                        </div>
+                        <div data-key="74" class="key red" onclick="playByMouse(74)">
+                            <kbd>J</kbd>
+                            <span class="sound">Jeep</span>
+                        </div>
+                        <div data-key="75" class="key grey" onclick="playByMouse(75)">
+                            <kbd>K</kbd>
+                            <span class="sound big">Kangaroo</span>
+                        </div>
+                        <div data-key="76" class="key greenish" onclick="playByMouse(76)">
+                            <kbd>L</kbd>
+                            <span class="sound">Lamp</span>
+                        </div>
+                    </div>
+
+                    <!-- Third Row-->
+
+                    <div class="keys thirdRow">
+                        <div data-key="90" class="key yelloish" onclick="playByMouse(90)">
+                            <kbd>Z</kbd>
+                            <span class="sound">Zoo</span>
+                        </div>
+                        <div data-key="88" class="key skin" onclick="playByMouse(88)">
+                            <kbd>X</kbd>
+                            <span class="sound">X-Ray</span>
+                        </div>
+                        <div data-key="67" class="key red" onclick="playByMouse(67)">
+                            <kbd>C</kbd>
+                            <span class="sound">Car</span>
+                        </div>
+                        <div data-key="86" class="key lightred" onclick="playByMouse(86)">
+                            <kbd>V</kbd>
+                            <span class="sound big">Vegetables</span>
+                        </div>
+                        <div data-key="66" class="key yelloish" onclick="playByMouse(66)">
+                            <kbd>B</kbd>
+                            <span class="sound">Bus</span>
+                        </div>
+                        <div data-key="78" class="key greenish" onclick="playByMouse(78)">
+                            <kbd>N</kbd>
+                            <span class="sound">Net</span>
+                        </div>
+                        <div data-key="77" class="key purple" onclick="playByMouse(77)">
+                            <kbd>M</kbd>
+                            <span class="sound">Mango</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!--  Shows Game When cliked on Game Button-->
+                <div id="gameGroup">
+                    <!--     Name of All Games Appear here like 1.Guess the Image , 2.Guess the Number etc.-->
+                </div>
+                
+                <!-- Math Quiz Game -->
+                <div id="mathQuizGame" class="hidden">
+                    <!-- math quiz game apperar here-->
+                    <table>
+                        <tr>
+                            <td>
+                                <h1 id="firstNum"></h1>
+                            </td>
+                            <td>
+                                <h1 id="operator"></h1>
+                            </td>
+                            <td>
+                                <h1 id="secondNum"></h1>
+                            </td>
+                            <td>
+                                <h1 id="equal"> = </h1>
+                            </td>
+                            <td id="inputAtMath"><input type="text" placeholder="?" id="answer"></td>
+                        </tr>
+                    </table>
+
+                    <button id="checkAns">Check</button> <br>
+                    <span id="info">Infromation!</span>
+
+                </div>
+                
+                <!--Guess The Image-->
+                <div id="placeGame" class="hidden">
+                    <!--     Guess the Image Game appear here -->
+                    <div id="placeImage">
+
+                    </div>
+                    <div id="possibleAnswer">
+                        <button class="btnAtGame" id="ansNum0"></button>
+                        <button class="btnAtGame" id="ansNum1"></button>
+                        <button class="btnAtGame" id="ansNum2"></button>
+                        <button class="btnAtGame" id="ansNum3"></button>
+                    </div>
+                </div>
+
+                <!--Guess The Number-->
+                <div id="guessNumber" class="hidden">
+                    <!--     Guess the Number Game appear here -->
+                    <form action="" name="guessquiz">
+                        <h2>Guess My Number</h2>
+                        <input type="text" id="prompt" name="prompt" value="Guess my number ?">
+                        <input type="text" id="inputVal" placeholder="Enter Number Here!"> <br>
+                        <input type="button" value="Guess" id="guess">
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Right Section with 20% width Which shows the 4 button like Ryhmes,Drum,Piaon and Games-->
+            <div class="col-md-2">
+                <button id="ryhmes" class="btn grey"><i class="fa fa-ravelry" aria-hidden="true"></i> Ryhmes</button>
+                <button id="drum" class="btn purple"><i class="fa fa-eercast" aria-hidden="true"></i> Drum</button>
+                <button id="piano" class="btn pink"><i class="fa fa-music" aria-hidden="true"></i> Piano</button>
+                <button id="games" class="btn greenish"><i class="fa fa-gamepad" aria-hidden="true"></i> Games</button>
+                <!-- Show Images at Bottom Right when Rhymes button is active or clicked -->
+                <div id="images">
+                    <!--Images appear here with Javascript-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+   
+    <!--    Place audio tags for Rhymes, Piaon and Drum    -->
+    <div id="change">
+
+    </div>
+    
+    
+    
+    
+    <!--    Place Right answer audio and wrong answer audio here via JQuery    -->
+    <div id="audioPlay">
+
+    </div>
+
+   
+   
+   
+    <!--Testing-->
+    <!--
+    <audio data-key="65" src="sounds/a65.mp3"></audio>
+    <audio data-key="66" src="sounds/a66.mp3"></audio>
+    <audio data-key="67" src="sounds/a67.mp3"></audio>
+    <audio data-key="68" src="sounds/a68.mp3"></audio>
+    <audio data-key="69" src="sounds/a69.mp3"></audio>
+    <audio data-key="70" src="sounds/a70.mp3"></audio>
+    <audio data-key="71" src="sounds/a71.mp3"></audio>
+    <audio data-key="72" src="sounds/a72.mp3"></audio>
+    <audio data-key="73" src="sounds/a73.mp3"></audio>
+
+
+    <audio data-key="74" src="sounds/a74.mp3"></audio>
+    <audio data-key="75" src="sounds/a75.mp3"></audio>
+    <audio data-key="76" src="sounds/a76.mp3"></audio>
+    <audio data-key="77" src="sounds/a77.mp3"></audio>
+    <audio data-key="78" src="sounds/a78.mp3"></audio>
+    <audio data-key="79" src="sounds/a79.mp3"></audio>
+    <audio data-key="80" src="sounds/a80.mp3"></audio>
+    <audio data-key="81" src="sounds/a81.mp3"></audio>
+    <audio data-key="82" src="sounds/a82.mp3"></audio>
+
+    <audio data-key="83" src="sounds/a83.mp3"></audio>
+    <audio data-key="84" src="sounds/a84.mp3"></audio>
+    <audio data-key="85" src="sounds/a85.mp3"></audio>
+    <audio data-key="86" src="sounds/a86.mp3"></audio>
+    <audio data-key="87" src="sounds/a87.mp3"></audio>
+    <audio data-key="88" src="sounds/a88.mp3"></audio>
+    <audio data-key="89" src="sounds/a89.mp3"></audio>
+    <audio data-key="90" src="sounds/a90.mp3"></audio>
+-->
+
+
+</body>
+
+</html>
